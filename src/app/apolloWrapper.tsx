@@ -8,7 +8,6 @@ import {
 } from "@apollo/experimental-nextjs-app-support/ssr"
 
 const endpoint = process.env.VERCEL_URL ?? "http://localhost:3000"
-console.log(`Using ${endpoint}`)
 
 function makeClient() {
   const httpLink = new HttpLink({
