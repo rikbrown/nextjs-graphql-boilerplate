@@ -7,9 +7,9 @@ import {
   SSRMultipartLink,
 } from "@apollo/experimental-nextjs-app-support/ssr"
 
-const endpoint = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
-
 function makeClient() {
+  const endpoint = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
+
   const httpLink = new HttpLink({
     // https://studio.apollographql.com/public/spacex-l4uc6p/
     uri: `${endpoint}/graphql`,
