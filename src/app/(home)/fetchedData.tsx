@@ -2,6 +2,7 @@
 
 import { useSuspenseQuery } from "@apollo/client"
 import { gql } from "graphql-tag"
+import { Suspense } from "react"
 
 export const dynamic = "force-dynamic"
 
@@ -12,7 +13,5 @@ export function FetchedData() {
     }
   `)
 
-  const result = data ? data["hello"] : "Loading"
-
-  return <>{result}</>
+  return <Suspense fallback={<>Loading</>}>{data.hello}</Suspense>
 }
