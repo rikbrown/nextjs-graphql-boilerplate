@@ -4,8 +4,6 @@ import { useSuspenseQuery } from "@apollo/client"
 import { gql } from "graphql-tag"
 import { Suspense } from "react"
 
-export const dynamic = "force-dynamic"
-
 export function FetchedData() {
   const { data } = useSuspenseQuery<any>(gql`
     query ExampleQuery {
