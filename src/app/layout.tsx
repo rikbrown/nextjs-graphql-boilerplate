@@ -1,6 +1,9 @@
 import "./globals.css"
 
+import { loadDevMessages, loadErrorMessages } from "@apollo/client/dev"
 import { Inter } from "next/font/google"
+
+import { ApolloWrapper } from "@/app/apolloWrapper"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -11,8 +14,13 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className="h-full antialiased" lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ApolloWrapper>
+      <html className="h-full antialiased" lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ApolloWrapper>
   )
 }
+
+loadDevMessages()
+loadErrorMessages()
