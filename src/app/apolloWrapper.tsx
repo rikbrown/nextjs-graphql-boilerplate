@@ -7,7 +7,10 @@ import {
   SSRMultipartLink,
 } from "@apollo/experimental-nextjs-app-support/ssr"
 
-const endpoint = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"
+if (!process.env.VERCEL_URL) {
+  throw new Error("Missing VERCEL_URL")
+}
+const endpoint = `${process.env.VERCEL_URL.includes("localhost") ? "http" : "https"}://${process.env.VERCEL_URL}`
 
 function makeClient() {
   const httpLink = new HttpLink({
